@@ -7,11 +7,11 @@ This script analyzes the complexity of the password. And gives the value of comp
 Example of script launch on Linux, Python 3.5:
 ```bash
 $ python3 password_strength.py
-Input your password: bnsskdIN
-Password complexity 6 out of 10.
+Input your password: fj48пр
+Password complexity 4 out of 10.
 ------------------------------
-Best practices for password strength:
-Password does not contain a digit.
+Password has less than 8 characters.
+Password does not contain a upper symbol.
 Password does not contain a special symbol.
 ```
 
