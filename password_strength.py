@@ -4,8 +4,8 @@ import getpass
 
 
 def has_correct_length(password):
-    LENGH_PASSWORD = 8
-    if len(password) >= LENGH_PASSWORD:
+    length_password = 8
+    if len(password) >= length_password:
         return True
     else:
         return False
@@ -65,10 +65,10 @@ def get_password_strength(password):
     }
 
     password_complexity = 0
-    COST_CHECK = 2
+    cost_check = 2
     for check, _ in check_list:
         if check:
-            password_complexity += COST_CHECK
+            password_complexity += cost_check
 
     return password_complexity, check_list
 
