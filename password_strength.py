@@ -5,38 +5,23 @@ import getpass
 
 def has_correct_length(password):
     length_password = 8
-    if len(password) >= length_password:
-        return True
-    else:
-        return False
+    return len(password) >= length_password
 
 
 def has_digit_symbol(password):
-    if re.search('\d', password):
-        return True
-    else:
-        return False
+    return bool(re.search('\d', password))
 
 
 def has_lower_symbol(password):
-    if re.search('[a-z,а-я]', password):
-        return True
-    else:
-        return False
+    return bool(re.search('[a-z,а-я]', password))
 
 
 def has_upper_symbol(password):
-    if re.search('[A-Z,А-Я]', password):
-        return True
-    else:
-        return False
+    return bool(re.search('[A-Z,А-Я]', password))
 
 
 def has_special_symbol(password):
-    if re.search('\W', password):
-        return True
-    else:
-        return False
+    return bool(re.search('\W', password))
 
 
 def get_password_strength(password):
@@ -66,22 +51,24 @@ def get_password_strength(password):
 
     password_complexity = 0
     cost_check = 2
-    for check, _ in check_list:
+    message_list = []
+    for check, message in check_list:
         if check:
             password_complexity += cost_check
+        else:
+            message_list.append(message)
 
-    return password_complexity, check_list
+    return password_complexity, message_list
 
 
-def print_check_result(complexity, check_list):
+def print_check_result(complexity, message_list):
     print('Password complexity {0} out of 10.'.format(complexity))
     if complexity == 10:
         print('You have a strong password.')
     else:
         print('-' * 30)
-        for check, message in check_list:
-            if not check:
-                print(message)
+        for message in message_list:
+            print(message)
 
 
 if __name__ == '__main__':
@@ -89,5 +76,5 @@ if __name__ == '__main__':
     if not password:
         sys.exit('Password is empty.')
 
-    complexity, check_list = get_password_strength(password)
-    print_check_result(complexity, check_list)
+    complexity, message_list = get_password_strength(password)
+    print_check_result(complexity, message_list)
