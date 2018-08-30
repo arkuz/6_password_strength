@@ -63,7 +63,8 @@ def get_password_strength(password):
 
 def print_check_result(complexity, message_list):
     print('Password complexity {0} out of 10.'.format(complexity))
-    if complexity == 10:
+    total_complexity = 10
+    if complexity == total_complexity:
         print('You have a strong password.')
     else:
         print('-' * 30)
